@@ -1,10 +1,10 @@
+from datetime import datetime
+
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
-from datetime import datetime
-from django.db.models import Avg
 from rest_framework.relations import SlugRelatedField
-
-from reviews.models import Categories, Genres, Title, Comment, Review
+from reviews.models import Categories, Comment, Genres, Review, Title
 
 
 class CategorySerializer(serializers.ModelSerializer):

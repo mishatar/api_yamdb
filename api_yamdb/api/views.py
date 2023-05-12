@@ -1,13 +1,15 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, mixins, filters
 import logging
+
+from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from .permissions import IsAdminOrReadOnly, IsAdminOrAuthorOrReadOnly
+from rest_framework import filters, mixins, viewsets
+from reviews.models import Categories, Genres, Review, Title
+
+from .filters import TitlesFilter
+from .permissions import IsAdminOrAuthorOrReadOnly, IsAdminOrReadOnly
 from .serializers import (CategorySerializer, CommentSerializer,
                           GenreSerializer, ReviewSerializer,
                           TitleListSerializer, TitleSerializer)
-from reviews.models import Categories, Genres, Review, Title
-from .filters import TitlesFilter
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -81,5 +83,4 @@ class TitleViewSet(viewsets.ModelViewSet):
         return TitleSerializer
 
     def get_queryset(self):
-        queryset = Title.objects.all()
-        return queryset
+        return Title.objects.all()

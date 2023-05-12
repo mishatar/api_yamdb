@@ -1,5 +1,6 @@
-from rest_framework import permissions
 import logging
+
+from rest_framework import permissions
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -14,6 +15,7 @@ class IsAdminCustomUser(permissions.BasePermission):
             and (request.user.is_admin)
         ):
             return True
+        return True
 
 
 class IsAdminOrReadOnly(permissions.BasePermission):

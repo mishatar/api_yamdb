@@ -12,7 +12,7 @@ class TitleOptions(models.Model):
 
     def __str__(self):
         return self.name[:15]
- 
+
 
 class Categories(TitleOptions):
     pass
